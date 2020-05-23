@@ -1,0 +1,41 @@
+
+
+<div class="banner show-banner">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+    <p>Le bon choix, tout cela est veridique. </p>
+    <%= link_to 'Back to main page', cocktails_path, class: "btn btn-primary" %>
+
+
+ </div>
+
+</div>
+
+ <div class="container mt-3">
+
+
+  <h1 class="mb-3">Recipe:</h1>
+
+
+  <% if @doses.empty? %>
+
+  <p>This recipe is empty! Add some ingredients!</p>
+
+  <% else %>
+
+  <ul>
+
+    <% @doses.each do |dose| %>
+
+    <li> <h6> <%= dose.description %> of <%= Ingredient.find(dose.ingredient_id).name%> </h6></li>
+    <% end %>
+
+
+  </ul>
+<% end %>
+
+
+
+
+ </div>
+
