@@ -34,7 +34,7 @@
 <div class="container my-4">
 
 
-  <% @cocktails.each do |cocktail| %>
+  <% @cocktails.reverse.each do |cocktail| %>
 
    <div class="card-product mt-3">
   <%= image_tag @array_of_pics.sample, alt: "cocktail image", width: 200, height: 200 %>
@@ -42,7 +42,9 @@
     <h2>
       <%= link_to  cocktail.name.capitalize, cocktail_path(cocktail)%></h2>
     <p><strong>Ingredients:</strong> <%=  cocktail.ingredients.empty? ? "Add some!" : cocktail.ingredients.map { |i| i.name }.join(", ")%></p>
-  </div>
+    <%= link_to "Delete this recipe", cocktail_path(cocktail), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+
   </div>
 
 

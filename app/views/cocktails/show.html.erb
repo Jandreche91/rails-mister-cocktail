@@ -27,15 +27,37 @@
 
     <% @doses.each do |dose| %>
 
-    <li> <h6> <%= dose.description %> of <%= Ingredient.find(dose.ingredient_id).name%> </h6></li>
+    <li> <h6> <%= dose.description %> of <%= Ingredient.find(dose.ingredient_id).name%></h6>
+      <p><%= link_to "Delete this dose", dose_path(dose), method: :delete, data: {confirm: "Are you sure?"} %></p>
+    </li>
     <% end %>
-
 
   </ul>
 <% end %>
 
+ </div>
+
+ <div class="container my-5">
+   <h6>Add new ingredients to this recipe:</h6>
+
+    <%= simple_form_for [@cocktail, @new_dose], wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+    <%= f.input :description, placeholder: "Measures" %>
+    <h6 class="mx-5">of</h6>
+    <%= f.association :ingredient, prompt: "Select ingredient" %>
+    <%= f.button :submit, "Add", class: "btn btn-primary ml-3" %>
+    <% end %>
+
+
+ </div>
 
 
 
+ <div class="container my-5">
+   <h6>Unhappy with the name of the cocktail? Change it!</h6>
+    <%= simple_form_for @cocktail,  wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
+
+  <%= f.input :name %>
+  <%= f.button :submit, "Change it!" , class: "btn btn-primary ml-3" %>
+  <% end%>
  </div>
 
