@@ -23,16 +23,12 @@ class CocktailsController < ApplicationController
 
   def update
     @cocktail.update(cocktail_params)
-    if @cocktail.save
-      redirect_to cocktail_path(@cocktail)
-    else
-      render :show
-    end
+    redirect_to cocktail_path(@cocktail)
   end
 
   def destroy
     @cocktail.destroy
-    redirect_to cocktails_path
+    redirect_to root_path
   end
 
   private

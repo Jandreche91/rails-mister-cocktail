@@ -4,7 +4,7 @@
   <div class="container">
     <h1><%= @cocktail.name %></h1>
     <p>Le bon choix, tout cela est veridique. </p>
-    <%= link_to 'Back to main page', cocktails_path, class: "btn btn-primary" %>
+    <%= link_to 'Back to main page', root_path, class: "btn btn-primary" %>
 
 
  </div>
@@ -15,6 +15,8 @@
 
 
   <h1 class="mb-3">Recipe:</h1>
+
+
 
 
   <% if @doses.empty? %>
