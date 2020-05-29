@@ -1,7 +1,6 @@
 
 
-<div class="banner show-banner">
-  <div class="container">
+  <div class="banner pl-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @cocktail.photo.key %>')">
     <h1><%= @cocktail.name %></h1>
     <p>Le bon choix, tout cela est veridique. </p>
     <%= link_to 'Back to main page', root_path, class: "btn btn-primary" %>
