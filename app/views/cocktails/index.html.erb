@@ -9,6 +9,12 @@
   <%= simple_form_for @new_cocktail,  wrapper: :inline_form, html: { class: 'form-inline' } do |f| %>
 
   <%= f.input :name, placeholder: "Your cocktail name" %>
+  <label class="btn btn-primary ml-3">
+    Add a picture!
+    <span style="display: none;">
+  <%= f.input :photo, as: :file,  :input_html => { :class => 'ml-3' }, label: false, required: true%>
+    </span>
+  </label>
   <%= f.button :submit, "Add your new cocktail!" , class: "btn btn-primary ml-3" %>
 
   <% end %>
@@ -37,7 +43,7 @@
   <% @cocktails.reverse.each do |cocktail| %>
 
    <div class="card-product mt-3">
-  <%= cl_image_tag("oajoexpa4oc9qjptiaxi",     width: 200, height: 200, crop: :fill)  %>
+  <%= cl_image_tag cocktail.photo.key, width: 200, height: 200, crop: :fill  %>
   <div class="card-product-infos">
     <h2>
       <%= link_to  cocktail.name.capitalize, cocktail_path(cocktail)%></h2>
